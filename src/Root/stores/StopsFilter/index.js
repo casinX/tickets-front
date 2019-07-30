@@ -35,7 +35,11 @@ class StopsFilter extends Relax {
       return;
     }
 
-    this.values[quantity] = !this.values[quantity];
+    // нужна копия тк используется в мемоизации фильтра в рендере
+    this.values = {
+      ...this.values,
+      [quantity]: !this.values[quantity],
+    };
   };
 
   @sync()

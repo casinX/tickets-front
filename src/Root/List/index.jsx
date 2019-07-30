@@ -3,12 +3,12 @@ import { PureComponent } from '@ktx/react-relax';
 import propTypes from 'prop-types';
 
 import { stores } from 'Root';
-
 import LoadingStub from 'components/LoadingStub';
 
 import Ticket from './Ticket';
-import ticketStyles from './Ticket/styles.scss';
+import filterTickets from './utils/filterTickets';
 
+import ticketStyles from './Ticket/styles.scss';
 import styles from './styles.scss';
 
 
@@ -33,13 +33,9 @@ class List extends PureComponent {
 
     const { tickets } = stores.list;
     const { type: currencyType, rates } = stores.currency;
-    const { values: stopsValues } = stores.stopsFilter;
+    const { values: stopValues } = stores.stopsFilter;
 
-    const filteredIds = tickets.ids.filter(id => {
-      const entity = tickets.entities[id];
-      return stopsValues[entity.stops];
-    });
-
+    const filteredIds = filterTickets(tickets, stopValues);
     const isEmpty = filteredIds.length === 0;
 
     return <div className={ styles.root }>
