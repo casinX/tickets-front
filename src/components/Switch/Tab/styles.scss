@@ -1,0 +1,51 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root{
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+  line-height: 38px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+
+  + .root{
+    margin-left: -1px;
+  }
+
+  &:nth-child(2){
+    border-radius: $radius-main 0 0 $radius-main;
+  }
+
+  &:last-child{
+    border-radius: 0 $radius-main $radius-main 0;
+  }
+
+  @include animateFast(background-color, color, border-color);
+
+  &.selected{
+    background-color: $blue-main;
+    color: $white-main;
+    border-color: $blue-main;
+    z-index: 1;
+  }
+
+  &.unSelected{
+    color: $blue-main;
+    border-color: $gray-main;
+
+    @include hover{
+      background-color: $blue-twilight;
+      border-color: $blue-main;
+
+      + .root{
+        border-color: transparent;
+      }
+    }
+  }
+}

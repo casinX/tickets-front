@@ -1,6 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import Tab from './Tab';
+
 import styles from './styles.scss';
 
 
@@ -19,17 +21,15 @@ const Switch = React.memo((props) => {
   } = props;
 
   return <ul className={ `${styles.root} ${className}` }>
+    <div className={styles.substrate}/>
     { items.map(item => {
-      return <li
-        className={`
-          ${styles.tab}
-          ${item.value === value ? styles.selected : styles.unSelected }
-        `}
+      return <Tab
+        isSelected={item.value === value}
         key={item.value}
         onClick={wrap(onChange, item.value)}
       >
         { item.content }
-      </li>
+      </Tab>
     }) }
   </ul>;
 });

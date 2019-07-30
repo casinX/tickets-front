@@ -5,52 +5,19 @@
 
 .root {
   display: flex;
+  position: relative;
   width: 100%;
   height: 40px;
-  border-radius: $radius-main;
   align-items: stretch;
-  overflow: hidden;
 }
 
 
-.tab{
+.substrate{
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  font-size: 12px;
-  font-weight: 600;
-  text-align: center;
-  line-height: 38px;
-  cursor: pointer;
-  border-width: 1px;
-  border-style: solid;
-
-  &:first-child{
-    border-radius: $radius-main 0 0 $radius-main;
-  }
-
-  &:last-child{
-    border-radius: 0 $radius-main $radius-main 0;
-  }
-
-  + .tab{
-    margin-left: -1px;
-  }
-
-  @include animateFast(background-color, color, border-color);
-
-  &.selected{
-    background-color: $blue-main;
-    color: $white-main;
-    border-color: $blue-main;
-    z-index: 2;
-  }
-
-  &.unSelected{
-    color: $blue-main;
-    border-color: $gray-main;
-
-    @include hover{
-      background-color: $blue-twilight;
-      border-color: $blue-main;
-    }
-  }
+  height: 100%;
+  border-radius: $radius-main;
+  border: 1px solid $gray-main;
 }
