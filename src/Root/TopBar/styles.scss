@@ -3,6 +3,13 @@
 @import 'mixins';
 
 
+@keyframes pulse {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.1) }
+  100% { transform: scale(1) }
+}
+
+
 .root {
   display: flex;
   align-items: center;
@@ -12,7 +19,17 @@
 }
 
 
-.logo{
+.logo {
   height: 90px;
   width: 90px;
+
+  &.pulse {
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+  }
+
+  &.static {
+  }
 }

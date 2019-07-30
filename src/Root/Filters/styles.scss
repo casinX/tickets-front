@@ -3,11 +3,21 @@
 @import 'mixins';
 
 
-.root {
+.root,
+.rootBase{
   flex: 0 0 232px;
+  margin-right: 20px;
+}
+
+
+.rootBase{
+  height: 300px;
+}
+
+
+.root {
   border-radius: $radius-main;
   background-color: $white-main;
   padding: 15px 0;
-  margin-right: 20px;
   box-shadow: $shadow-card;
 }

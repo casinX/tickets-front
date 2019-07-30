@@ -3,6 +3,15 @@
 @import 'mixins';
 
 
+.rootBase{
+  height: 166px;
+
+  + .rootBase{
+    margin-top: 20px;
+  }
+}
+
+
 .root {
   display: flex;
   position: relative;

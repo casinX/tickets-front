@@ -1,0 +1,20 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+@keyframes pulse {
+  0% { background-color: #f0f0f0 }
+  50% { background-color: $gray-light }
+  100% { background-color: #f0f0f0 }
+}
+
+
+.root {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  border-radius: $radius-main;
+  overflow: hidden;
+}

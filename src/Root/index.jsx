@@ -44,11 +44,11 @@ class Root extends PureComponent {
     ].every(Boolean);
 
     return <div className={styles.root}>
-      <TopBar/>
-      { isReady && <div className={styles.content}>
-        <Filters/>
-        <List/>
-      </div> }
+      <TopBar isLoading={!isReady}/>
+      <div className={styles.content}>
+        <Filters isLoading={!isReady}/>
+        <List isLoading={!isReady}/>
+      </div>
     </div>;
   }
 }

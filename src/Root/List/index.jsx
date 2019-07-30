@@ -1,9 +1,13 @@
 import React from 'react';
 import { PureComponent } from '@ktx/react-relax';
+import propTypes from 'prop-types';
 
 import { stores } from 'Root';
 
+import LoadingStub from 'components/LoadingStub';
+
 import Ticket from './Ticket';
+import ticketStyles from './Ticket/styles.scss';
 
 import styles from './styles.scss';
 
@@ -17,6 +21,16 @@ class List extends PureComponent {
   }
 
   render() {
+    const { isLoading } = this.props;
+
+    if(isLoading){
+      return <div className={ styles.root }>
+        <LoadingStub className={ticketStyles.rootBase}/>
+        <LoadingStub className={ticketStyles.rootBase}/>
+        <LoadingStub className={ticketStyles.rootBase}/>
+      </div>;
+    }
+
     const { tickets } = stores.list;
     const { type: currencyType, rates } = stores.currency;
     const { values: stopsValues } = stores.stopsFilter;
@@ -47,7 +61,9 @@ class List extends PureComponent {
 }
 
 
-List.propTypes = {};
+List.propTypes = {
+  isLoading: propTypes.bool.isRequired,
+};
 
 List.defaultProps = {};
 
