@@ -5,8 +5,14 @@
 
 .root,
 .rootBase{
-  flex: 0 0 232px;
-  margin-right: 20px;
+  @include desktop{
+    flex: 0 0 232px;
+    margin-right: 20px;
+  }
+
+  @include mobile{
+    flex: 0 0 100%;
+  }
 }
 
 
@@ -16,8 +22,11 @@
 
 
 .root {
-  border-radius: $radius-main;
   background-color: $white-main;
   padding: 15px 0;
   box-shadow: $shadow-card;
+
+  @include desktop{
+    border-radius: $radius-main;
+  }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { PureComponent } from '@ktx/react-relax';
 
+import appConfig from 'config/app';
+
 import TopBar from './TopBar';
 import Filters from './Filters';
 import List from './List';

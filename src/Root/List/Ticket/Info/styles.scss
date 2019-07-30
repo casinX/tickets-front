@@ -7,8 +7,15 @@
   position: relative;
   background-color: $white-main;
   width: 100%;
-  padding: 25px;
-  border-radius: 0 $radius-main $radius-main 0;
+
+  @include desktop{
+    border-radius: 0 $radius-main $radius-main 0;
+    padding: 25px;
+  }
+
+  @include mobile{
+    padding: 20px 15px 0 15px;
+  }
 }
 
 

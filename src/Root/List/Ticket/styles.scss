@@ -15,7 +15,6 @@
 .root {
   display: flex;
   position: relative;
-  border-radius: $radius-main;
   box-shadow: $shadow-card;
   background-color: $white-main;
 
@@ -23,21 +22,30 @@
     margin-top: 20px;
   }
 
-  @include animateSlow(box-shadow);
+  @include desktop{
+    border-radius: $radius-main;
 
-  &:before{
-    display: block;
-    position: absolute;
-    content: "";
-    height: 46px;
-    width: calc(100% - 17px);
-    left: 8.5px;
-    bottom: 0;
-    opacity: 0;
-    box-shadow: 0 10px 50px rgba(91, 137, 164, .25);
+    &:before{
+      display: block;
+      position: absolute;
+      content: "";
+      height: 46px;
+      width: calc(100% - 17px);
+      left: 8.5px;
+      bottom: 0;
+      opacity: 0;
+      box-shadow: 0 10px 50px rgba(91, 137, 164, .25);
 
-    @include animateSlow(opacity);
+      @include animateSlow(opacity);
+    }
   }
+
+  @include mobile{
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  @include animateSlow(box-shadow);
 
   @include hover{
     box-shadow: 0 5px 25px rgba(91, 137, 164, .1);

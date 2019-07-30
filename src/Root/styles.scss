@@ -5,12 +5,27 @@
 
 .root {
   margin: 0 auto;
-  width: 820px;
+
+  @include desktop{
+    width: 820px;
+  }
+
+  @include mobile{
+    width: 100%;
+  }
 }
 
 
 .content{
   display: flex;
   align-items: flex-start;
-  margin-bottom: 100px;
+
+  @include desktop{
+    margin-bottom: 100px;
+  }
+
+  @include mobile{
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
 }

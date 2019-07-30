@@ -15,6 +15,9 @@
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-out;
-  border-radius: $radius-main;
   overflow: hidden;
+
+  @include desktop{
+    border-radius: $radius-main;
+  }
 }

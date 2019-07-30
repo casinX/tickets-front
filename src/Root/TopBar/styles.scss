@@ -15,13 +15,27 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 161px;
+
+  @include desktop{
+    height: 161px;
+  }
+
+  @include mobile{
+    height: 100px;
+  }
 }
 
 
 .logo {
-  height: 90px;
-  width: 90px;
+  @include desktop{
+    height: 90px;
+    width: 90px;
+  }
+
+  @include mobile{
+    height: 60px;
+    width: 60px;
+  }
 
   &.pulse {
     animation-name: pulse;
