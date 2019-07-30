@@ -4,6 +4,10 @@ import { PureComponent } from '@ktx/react-relax';
 import SectionTitle from 'components/SectionTitle';
 import Checkbox from 'components/Checkbox';
 
+import pluralize from 'utils/strings/pluralize';
+
+import { stores } from 'Root';
+
 import styles from './styles.scss';
 
 
@@ -26,29 +30,29 @@ class StopQuantity extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      values: getInitialState(),
-    }
+    this.attach(stores.stopsFilter);
   }
 
-  toggleQuantity = (key) => () => {
-
-    // todo all
-    this.setState(prevState => {
-      const { values } = prevState;
-
-      return {
-        ...prevState,
-        values: {
-          ...values,
-          [key]: !values[key],
-        }
-      }
-    });
+  toggleQuantity = (quantity) => () => {
+    stores.stopsFilter.toggleQuantity(quantity);
   };
 
   render() {
-    const { values } = this.state;
+    const { values, min, max } = stores.stopsFilter;
+
+    const checkboxes = [];
+
+    for(let i = min; i <= max; i++){
+      checkboxes.push(
+        <Checkbox
+          key={i}
+          onClick={this.toggleQuantity(i)}
+          value={values[i]}
+        >
+          { i === 0 ? 'Без пересадок' : `${i} ${pluralize(i, 'пересадка', 'пересадки', 'пересадок')}` }
+        </Checkbox>
+      )
+    }
 
     return <div className={ styles.root }>
       <SectionTitle className={styles.title}>
@@ -56,40 +60,13 @@ class StopQuantity extends PureComponent {
       </SectionTitle>
 
       <Checkbox
-        onClick={this.toggleQuantity('all')}
-        value={Object.values(this.state.values).every(Boolean)}
+        onClick={this.toggleQuantity(null)}
+        value={Object.values(values).every(Boolean)}
       >
         Все
       </Checkbox>
 
-      <Checkbox
-        onClick={this.toggleQuantity(0)}
-        value={values[0]}
-      >
-        Без пересадок
-      </Checkbox>
-
-      <Checkbox
-        onClick={this.toggleQuantity(1)}
-        value={values[1]}
-        onClickSingle={() => {console.warn('single')}}
-      >
-        1 пересадка
-      </Checkbox>
-
-      <Checkbox
-        onClick={this.toggleQuantity(2)}
-        value={values[2]}
-      >
-        2 пересадки
-      </Checkbox>
-
-      <Checkbox
-        onClick={this.toggleQuantity(3)}
-        value={values[3]}
-      >
-        3 пересадки
-      </Checkbox>
+      { checkboxes }
     </div>;
   }
 }

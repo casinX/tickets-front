@@ -1,6 +1,8 @@
-import Relax, { sync, async } from '@ktx/react-relax';
+import Relax, { async } from '@ktx/react-relax';
 
 import TicketsListGet from 'api/TicketsListGet';
+
+import Observer from 'lib/Observer';
 
 
 class List extends Relax {
@@ -12,6 +14,8 @@ class List extends Relax {
     };
 
     this.tickets = null;
+
+    this.onLoadList = new Observer();
   };
 
   @async()
@@ -20,6 +24,7 @@ class List extends Relax {
 
     if(response){
       this.tickets = response;
+      this.onLoadList.notifyAll();
     }
   };
 }

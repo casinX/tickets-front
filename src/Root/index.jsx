@@ -7,6 +7,7 @@ import List from './List';
 
 import ListStore from './stores/List';
 import CurrencyStore from './stores/Currency';
+import StopsFilterStore from './stores/StopsFilter';
 
 import styles from './styles.scss';
 
@@ -14,6 +15,7 @@ import styles from './styles.scss';
 export const stores = {
   list: null,
   currency: null,
+  stopsFilter: null,
 };
 
 
@@ -24,6 +26,7 @@ class Root extends PureComponent {
 
     stores.list = new ListStore();
     stores.currency = new CurrencyStore();
+    stores.stopsFilter = new StopsFilterStore(stores.list);
 
     this.attach(stores.list, stores.currency);
   }
