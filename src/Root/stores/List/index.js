@@ -1,8 +1,9 @@
 import Relax, { async } from '@ktx/react-relax';
 
 import TicketsListGet from 'api/TicketsListGet';
-
 import Observer from 'lib/Observer';
+
+import sortByPriceASC from './utils/sortByPriceASC';
 
 
 class List extends Relax {
@@ -24,6 +25,7 @@ class List extends Relax {
 
     if(response){
       this.tickets = response;
+      this.tickets.ids = sortByPriceASC(this.tickets);
       this.onLoadList.notifyAll();
     }
   };

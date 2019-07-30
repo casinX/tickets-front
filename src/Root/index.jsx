@@ -37,12 +37,15 @@ class Root extends PureComponent {
   };
 
   render() {
-    const hasTickets = stores.list.tickets !== null;
-    const hasRates = stores.currency.rates !== null;
+    const isReady = [
+      stores.list.tickets !== null,
+      stores.currency.rates !== null,
+      stores.stopsFilter.values !== null,
+    ].every(Boolean);
 
     return <div className={styles.root}>
       <TopBar/>
-      { hasTickets && hasRates && <div className={styles.content}>
+      { isReady && <div className={styles.content}>
         <Filters/>
         <List/>
       </div> }
