@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import styles from './styles.scss';
 
 
-// todo memoization
+// memoization ?
 const wrap = (func, arg) => () => {
   func(arg);
 };

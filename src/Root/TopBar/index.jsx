@@ -1,5 +1,7 @@
 import React from 'react';
 
+import logo from './img/logo.svg';
+
 import styles from './styles.scss';
 
 
@@ -7,7 +9,7 @@ const TopBar = React.memo((props) => {
   const {} = props;
 
   return <div className={ styles.root }>
-    Logo
+    <img className={styles.logo} src={logo} alt="Билеты"/>
   </div>;
 });
 
