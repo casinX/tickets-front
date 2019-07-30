@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf ./public && NODE_ENV=production webpack --config=./webpack/index.babel.js",
+    "build": "rimraf ./dist && NODE_ENV=production webpack --config=./webpack/index.babel.js",
     "start": "NODE_ENV=development webpack-dev-server --config=./webpack/index.babel.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

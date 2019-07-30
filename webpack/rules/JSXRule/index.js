@@ -4,7 +4,7 @@ export default () => ({
   loader: 'babel-loader',
   query: {
     presets: [
-      '@babel/preset-env',
+      [ '@babel/preset-env', { 'targets': { 'browsers': 'last 2 versions' } } ],
       '@babel/preset-react'
     ],
     plugins: [
