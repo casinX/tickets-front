@@ -4,6 +4,12 @@ import propTypes from 'prop-types';
 import styles from './styles.scss';
 
 
+// todo memoization
+const wrap = (func, arg) => () => {
+  func(arg);
+};
+
+
 const Switch = React.memo((props) => {
   const {
     items,
@@ -20,7 +26,7 @@ const Switch = React.memo((props) => {
           ${item.value === value ? styles.selected : styles.unSelected }
         `}
         key={item.value}
-        onClick={() => onChange(item.value)}
+        onClick={wrap(onChange, item.value)}
       >
         { item.content }
       </li>

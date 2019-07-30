@@ -6,6 +6,7 @@ import Box from './Box';
 import styles from './styles.scss';
 
 
+// todo memoization
 const noPropagation = (func) => (e) => {
   e.preventDefault();
   e.stopPropagation();
