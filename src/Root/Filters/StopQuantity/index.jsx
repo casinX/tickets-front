@@ -11,20 +11,6 @@ import { stores } from 'Root';
 import styles from './styles.scss';
 
 
-const MAX = 3;
-
-
-const getInitialState = () => {
-  const initialState = {};
-
-  for(let i = 0; i <= MAX; i++){
-    initialState[i] = true;
-  }
-
-  return initialState;
-};
-
-
 class StopQuantity extends PureComponent {
 
   constructor(props) {
