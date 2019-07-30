@@ -28,23 +28,23 @@ const Ticket = React.memo((props) => {
   } = data;
 
   return <div className={ styles.root }>
-    <Carrier
-      value={carrier}
-      onClickBuy={() => {}}
-      price={priceByCurrency}
-      currencyType={currencyType}
-    />
-    <Info
-      arrivalTime={arrivalTime}
-      departureTime={departureTime}
-      stops={stops}
-      arrivalDate={arrivalDate}
-      departureDate={departureDate}
-      destination={destination}
-      destinationName={destinationName}
-      origin={origin}
-      originName={originName}
-    />
+      <Carrier
+        value={carrier}
+        onClickBuy={() => {}}
+        price={priceByCurrency}
+        currencyType={currencyType}
+      />
+      <Info
+        arrivalTime={arrivalTime}
+        departureTime={departureTime}
+        stops={stops}
+        arrivalDate={arrivalDate}
+        departureDate={departureDate}
+        destination={destination}
+        destinationName={destinationName}
+        origin={origin}
+        originName={originName}
+      />
   </div>;
 });
 

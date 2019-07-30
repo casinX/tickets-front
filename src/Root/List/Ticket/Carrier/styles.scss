@@ -4,9 +4,12 @@
 
 
 .root {
+  position: relative;
+  background-color: $white-main;
   border-right: 1px solid $gray-light;
   padding: 25px 20px;
   flex: 0 0 200px;
+  border-radius: $radius-main 0 0 $radius-main;
 }
 
 

@@ -4,8 +4,11 @@
 
 
 .root {
+  position: relative;
+  background-color: $white-main;
   width: 100%;
   padding: 25px;
+  border-radius: 0 $radius-main $radius-main 0;
 }
 
 
