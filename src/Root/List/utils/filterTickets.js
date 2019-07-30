@@ -12,7 +12,6 @@ const prev = {
 
 export default (tickets, stopValues) => {
   if(stopValues === prev.stopValues && tickets.ids === prev.ticketIds){
-    console.warn('lek cahced');
     return prev.result;
   }
 
