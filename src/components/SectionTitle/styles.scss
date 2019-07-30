@@ -1,0 +1,13 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root {
+  font-size: 12px;
+  font-weight: 600;
+  color: $gray-dark;
+  line-height: 19px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}

@@ -1,0 +1,13 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root {
+  width: 232px;
+  border-radius: $radius-main;
+  background-color: $white-main;
+  padding: 15px 0;
+  margin-right: 20px;
+  box-shadow: $shadow-card;
+}

@@ -1,0 +1,14 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root {
+  margin: 0 auto;
+  width: auto;
+}
+
+
+.content{
+  display: flex;
+}

@@ -2,6 +2,7 @@
 @import 'fonts';
 @import 'vars';
 @import 'mixins';
+@import 'colors';
 
 
 *{
@@ -22,10 +23,11 @@ html, body {
 
 
 .root{
-  display: block;
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  background-color: $blue-light;
 }
