@@ -1,0 +1,46 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root {
+  display: flex;
+  width: 100%;
+  padding: 9px 15px 8px 15px;
+  cursor: pointer;
+  align-items: flex-start;
+
+  @include animate(background-color);
+
+  @include hover{
+    background-color: $blue-twilight;
+
+    .only{
+      opacity: 1;
+    }
+  }
+}
+
+
+.content{
+  width: 100%;
+  color: $gray-dark;
+  font-size: 13px;
+}
+
+
+.only{
+  font-size: 11px;
+  font-weight: 600;
+  color: $blue-main;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-left: 11px;
+  opacity: 0;
+
+  @include animateFast(color, opacity);
+
+  @include hover{
+    color: $orange-light;
+  }
+}

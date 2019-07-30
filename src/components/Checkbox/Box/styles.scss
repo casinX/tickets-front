@@ -1,0 +1,51 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  border-radius: $radius-small;
+  border-width: 1px;
+  border-style: solid;
+  margin-right: 11px;
+  overflow: hidden;
+  flex: 0 0 20px;
+
+  @include animate(border-color, background-color);
+
+  &.active{
+    border-color: $blue-main;
+    background-color: $blue-twilight;
+
+    .icon{
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &.inactive{
+    border-color: $gray-main;
+    background-color: $white-main;
+
+    .icon{
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+}
+
+
+.icon{
+  flex: 0 0 100%;
+  height: 8px;
+  background-image: url("./checkIcon.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include animate(transform, opacity);
+}

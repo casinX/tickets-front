@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CurrencyType from './CurrencyType';
+import StopQuantity from './StopQuantity';
 
 import styles from './styles.scss';
 
@@ -14,6 +15,7 @@ class Filters extends React.PureComponent {
   render() {
     return <div className={ styles.root }>
       <CurrencyType/>
+      <StopQuantity/>
     </div>;
   }
 }
