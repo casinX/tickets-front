@@ -4,7 +4,13 @@
 
 
 .rootBase{
-  height: 166px;
+  @include desktop{
+    height: 166px;
+  }
+
+  @include mobile{
+    height: 238px;
+  }
 
   + .rootBase{
     margin-top: 20px;
