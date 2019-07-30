@@ -1,0 +1,31 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root {
+  padding: 6px;
+  background-color: $orange-main;
+  cursor: pointer;
+  text-align: center;
+  color: $white-main;
+  border-radius: $radius-main;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 20px;
+
+  box-shadow: 0 1px 0 $orange-dark;
+
+  @include animate(background-color, box-shadow, transform);
+
+  @include hover{
+    box-shadow: 0 1px 0 $orange-dark, 0 1px 5px rgba(0,0,0, .25);
+    background-color: $orange-light;
+  }
+
+  @include active{
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+}

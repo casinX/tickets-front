@@ -1,0 +1,27 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.from,
+.to{
+  width: auto;
+}
+
+
+.name,
+.date{
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.name{
+  color: $gray-dark;
+  font-weight: 600;
+}
+
+
+.date{
+  color: $gray-oslo;
+}

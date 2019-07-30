@@ -6,10 +6,10 @@ const distName = 'dist';
 
 const proxy = {
   '/api': {
-    target: 'http://somesite.ru/api',
+    target: 'http://127.0.0.1:8000',
     pathRewrite: { '^/api': '' },
     onProxyReq: (proxyReq, req, res) => {
-      proxyReq.setHeader('Host', 'somesite.ru');
+      proxyReq.setHeader('Host', '127.0.0.1');
     },
   },
 };

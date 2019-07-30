@@ -1,0 +1,20 @@
+@import 'vars';
+@import 'colors';
+@import 'mixins';
+
+
+.root {
+  width: 100%;
+  padding: 25px;
+}
+
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  + .container{
+    margin-top: 10px;
+  }
+}

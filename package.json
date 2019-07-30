@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.5.5",
+    "@ktx/api-connection": "^3.0.2",
     "@ktx/react-relax": "^1.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
