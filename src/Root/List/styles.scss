@@ -4,5 +4,17 @@
 
 
 .root {
-  width: 566px;
+  width: 100%;
+}
+
+
+.emptyStub{
+  height: 166px;
+  line-height: 166px;
+  background-color: $white-main;
+  border-radius: $radius-main;
+  color: $gray-main;
+  font-size: 14px;
+  text-align: center;
+  box-shadow: $shadow-card;
 }

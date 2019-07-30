@@ -21,13 +21,16 @@ class List extends PureComponent {
     const { type: currencyType, rates } = stores.currency;
     const { values: stopsValues } = stores.stopsFilter;
 
-    return <div className={ styles.root }>
-      { tickets.ids.filter(id => {
-        const entity = tickets.entities[id];
-        return stopsValues[entity.stops];
-      }).map(id => {
-        const entity = tickets.entities[id];
+    const filteredIds = tickets.ids.filter(id => {
+      const entity = tickets.entities[id];
+      return stopsValues[entity.stops];
+    });
 
+    const isEmpty = filteredIds.length === 0;
+
+    return <div className={ styles.root }>
+      { !isEmpty && filteredIds.map(id => {
+        const entity = tickets.entities[id];
         return <Ticket
           key={id}
           data={entity}
@@ -35,6 +38,10 @@ class List extends PureComponent {
           currencyType={currencyType}
         />
       }) }
+
+      { isEmpty && <div className={styles.emptyStub}>
+        Ничего не найдено
+      </div> }
     </div>;
   }
 }
