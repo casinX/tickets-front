@@ -6,12 +6,14 @@ import Filters from './Filters';
 import List from './List';
 
 import ListStore from './stores/List';
+import CurrencyStore from './stores/Currency';
 
 import styles from './styles.scss';
 
 
 export const stores = {
   list: null,
+  currency: null,
 };
 
 
@@ -21,20 +23,23 @@ class Root extends PureComponent {
     super(props);
 
     stores.list = new ListStore();
+    stores.currency = new CurrencyStore();
 
-    this.attach(stores.list);
+    this.attach(stores.list, stores.currency);
   }
 
   componentDidMount = () => {
     stores.list.load();
+    stores.currency.loadRates();
   };
 
   render() {
     const hasTickets = stores.list.tickets !== null;
+    const hasRates = stores.currency.rates !== null;
 
     return <div className={styles.root}>
       <TopBar/>
-      { hasTickets && <div className={styles.content}>
+      { hasTickets && hasRates && <div className={styles.content}>
         <Filters/>
         <List/>
       </div> }

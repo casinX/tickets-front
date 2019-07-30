@@ -8,11 +8,14 @@ import styles from './styles.scss';
 
 
 const Ticket = React.memo((props) => {
-  const { data, currencySign } = props;
+  const {
+    data,
+    currencyType,
+    priceByCurrency,
+  } = props;
 
   const {
     carrier,
-    price,
     arrivalTime,
     departureTime,
     stops,
@@ -28,8 +31,8 @@ const Ticket = React.memo((props) => {
     <Carrier
       value={carrier}
       onClickBuy={() => {}}
-      price={price}
-      currencySign={currencySign}
+      price={priceByCurrency}
+      currencyType={currencyType}
     />
     <Info
       arrivalTime={arrivalTime}
@@ -48,7 +51,8 @@ const Ticket = React.memo((props) => {
 
 Ticket.propTypes = {
   data: propTypes.object.isRequired,
-  currencySign: propTypes.string.isRequired,
+  currencyType: propTypes.string.isRequired,
+  priceByCurrency: propTypes.number.isRequired,
 };
 
 Ticket.defaultProps = {};

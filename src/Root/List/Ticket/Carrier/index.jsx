@@ -1,6 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import currencyTypes from 'config/currencyTypes';
+
 import Logo from './Logo';
 import Button from './Button';
 
@@ -11,7 +13,7 @@ const Carrier = React.memo((props) => {
   const {
     value,
     price,
-    currencySign,
+    currencyType,
     onClickBuy,
   } = props;
 
@@ -24,7 +26,7 @@ const Carrier = React.memo((props) => {
     <Button onClick={onClickBuy}>
       Купить
       <br/>
-      за { price }{ currencySign }
+      за { price }{ currencyTypes.entities[currencyType].sign }
     </Button>
   </div>;
 });
@@ -33,7 +35,7 @@ const Carrier = React.memo((props) => {
 Carrier.propTypes = {
   value: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
-  currencySign: propTypes.string.isRequired,
+  currencyType: propTypes.string.isRequired,
   onClickBuy: propTypes.func.isRequired,
 };
 

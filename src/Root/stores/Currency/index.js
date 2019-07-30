@@ -2,6 +2,8 @@ import Relax, { sync, async } from '@ktx/react-relax';
 
 import ExchangeRatesGet from 'api/ExchangeRatesGet';
 
+import currencyTypes from 'config/currencyTypes';
+
 
 class Currency extends Relax {
   constructor() {
@@ -12,12 +14,12 @@ class Currency extends Relax {
     };
 
     this.rates = null;
-    this.currency = null;
+    this.type = null;
   };
 
   @sync()
-  setCurrency = () => {
-
+  setType = (type) => {
+    this.type = type;
   };
 
   @async()
@@ -26,6 +28,7 @@ class Currency extends Relax {
 
     if(response){
       this.rates = response;
+      this.setType(currencyTypes.keys.RUB);
     }
   };
 }

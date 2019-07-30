@@ -20,7 +20,6 @@ class List extends Relax {
 
     if(response){
       this.tickets = response;
-      console.warn(this.tickets);
     }
   };
 }

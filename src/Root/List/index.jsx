@@ -13,11 +13,12 @@ class List extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.attach(stores.list);
+    this.attach(stores.list, stores.currency);
   }
 
   render() {
     const { tickets } = stores.list;
+    const { type: currencyType, rates } = stores.currency;
 
     return <div className={ styles.root }>
       { tickets.ids.map(id => {
@@ -26,7 +27,8 @@ class List extends PureComponent {
         return <Ticket
           key={id}
           data={entity}
-          currencySign={'₽'}
+          priceByCurrency={Math.ceil(entity.price / rates[currencyType])}
+          currencyType={currencyType}
         />
       }) }
     </div>;

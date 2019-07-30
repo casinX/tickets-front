@@ -4,7 +4,17 @@ import { PureComponent } from '@ktx/react-relax';
 import SectionTitle from 'components/SectionTitle';
 import Switch from 'components/Switch';
 
+import currencyTypes from 'config/currencyTypes';
+
+import { stores } from 'Root';
+
 import styles from './styles.scss';
+
+
+const ITEMS = currencyTypes.order.map(key => {
+  const entity = currencyTypes.entities[key];
+  return { content: entity.name, value: key };
+});
 
 
 class CurrencyType extends PureComponent {
@@ -12,30 +22,24 @@ class CurrencyType extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currency: 'RUB',
-    };
+    this.attach(stores.currency);
   }
 
   onChange = (value) => {
-    this.setState({
-      currency: value,
-    })
+    stores.currency.setType(value);
   };
 
   render() {
+    const { type } = stores.currency;
+
     return <div className={ styles.root }>
       <SectionTitle>
         Валюта
       </SectionTitle>
       <Switch
         className={styles.switch}
-        items={[
-          { content: 'RUB', value: 'RUB' },
-          { content: 'USD', value: 'USD' },
-          { content: 'EUR', value: 'EUR' },
-        ]}
-        value={this.state.currency}
+        items={ITEMS}
+        value={type}
         onChange={this.onChange}
       />
     </div>;

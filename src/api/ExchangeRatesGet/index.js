@@ -1,5 +1,7 @@
 import Api from '@ktx/api-connection';
 
+import currencyTypes from 'config/currencyTypes';
+
 
 class ExchangeRatesGet extends Api{
   constructor(){
@@ -9,7 +11,16 @@ class ExchangeRatesGet extends Api{
   }
 
   response = (response) => {
-    console.warn(response);
+    const result = {};
+
+    Object.entries(response.data.Valute).forEach(entry => {
+      const [key, value] = entry;
+      result[key] = value.Value;
+    });
+
+    result[currencyTypes.keys.RUB] = 1;
+
+    return result;
   };
 }
 
