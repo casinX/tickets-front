@@ -23,6 +23,10 @@ class StopQuantity extends PureComponent {
     stores.stopsFilter.toggleQuantity(quantity);
   };
 
+  setOnly = (quantity) => () => {
+    stores.stopsFilter.setOnly(quantity);
+  };
+
   render() {
     const { values, min, max } = stores.stopsFilter;
 
@@ -34,6 +38,7 @@ class StopQuantity extends PureComponent {
           key={i}
           onClick={this.toggleQuantity(i)}
           value={values[i]}
+          onClickSingle={this.setOnly(i)}
         >
           { i === 0 ? 'Без пересадок' : `${i} ${pluralize(i, 'пересадка', 'пересадки', 'пересадок')}` }
         </Checkbox>

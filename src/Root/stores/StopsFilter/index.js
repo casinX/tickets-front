@@ -37,6 +37,12 @@ class StopsFilter extends Relax {
 
     this.values[quantity] = !this.values[quantity];
   };
+
+  @sync()
+  setOnly = (quantity) => {
+    this.values = getValues(this.min, this.max, false);
+    this.values[quantity] = true;
+  };
 }
 
 

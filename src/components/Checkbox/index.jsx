@@ -6,6 +6,13 @@ import Box from './Box';
 import styles from './styles.scss';
 
 
+const noPropagation = (func) => (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  func();
+};
+
+
 const Checkbox = React.memo((props) => {
   const {
     onClick,
@@ -26,7 +33,7 @@ const Checkbox = React.memo((props) => {
 
     { onClickSingle !== null && <button
       className={styles.only}
-      onClick={onClickSingle}
+      onClick={noPropagation(onClickSingle)}
     >
       Только
     </button> }
