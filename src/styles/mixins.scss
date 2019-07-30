@@ -1,0 +1,83 @@
+@import "vars";
+
+
+@mixin mobile(){
+  :global(.__IS_MOBILE__) & {
+    @content
+  }
+}
+
+
+@mixin desktop(){
+  :global(.__IS_DESKTOP__) & {
+    @content
+  }
+}
+
+
+@mixin hover(){
+  @include desktop {
+    &:hover {
+      @content
+    }
+  }
+}
+
+
+@mixin active(){
+  @include desktop {
+    &:active {
+      @content
+    }
+  }
+}
+
+
+@mixin selectable(){
+  user-select: text;
+}
+
+
+@mixin unSelectable(){
+  user-select: none;
+}
+
+
+@mixin animateFast($property...){
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1  {
+      $animatedProperty: $animatedProperty nth($property, $i) $transition-fast #{', '}
+    }
+  }
+  transition: $animatedProperty nth($property, length($property)) $transition-fast;
+}
+
+
+@mixin animate($property...){
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1  {
+      $animatedProperty: $animatedProperty nth($property, $i) $transition-normal #{', '}
+    }
+  }
+  transition: $animatedProperty nth($property, length($property)) $transition-normal;
+}
+
+
+@mixin animateSlow($property...){
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1  {
+      $animatedProperty: $animatedProperty nth($property, $i) $transition-slow #{', '}
+    }
+  }
+  transition: $animatedProperty nth($property, length($property)) $transition-slow;
+}
+
+
+@mixin autoCropText(){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
