@@ -6,25 +6,18 @@ import Box from './Box';
 import styles from './styles.scss';
 
 
-// memoization ?
-const noPropagation = (func) => (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  func();
-};
-
-
 const Checkbox = React.memo((props) => {
   const {
     onClick,
     value,
     onClickSingle,
     children,
+    applyArg,
   } = props;
 
   return <div
     className={ styles.root }
-    onClick={onClick}
+    onClick={() => onClick(applyArg)}
   >
     <Box value={value}/>
 
@@ -34,7 +27,10 @@ const Checkbox = React.memo((props) => {
 
     { onClickSingle !== null && <button
       className={styles.only}
-      onClick={noPropagation(onClickSingle)}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClickSingle(applyArg);
+      }}
     >
       Только
     </button> }
@@ -47,10 +43,12 @@ Checkbox.propTypes = {
   onClick: propTypes.func.isRequired,
   value: propTypes.bool.isRequired,
   onClickSingle: propTypes.func,
+  applyArg: propTypes.any,
 };
 
 Checkbox.defaultProps = {
   onClickSingle: null,
+  applyArg: null,
 };
 
 

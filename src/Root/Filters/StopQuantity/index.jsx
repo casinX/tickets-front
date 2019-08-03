@@ -19,11 +19,11 @@ class StopQuantity extends PureComponent {
     this.attach(stores.stopsFilter);
   }
 
-  toggleQuantity = (quantity) => () => {
+  toggleQuantity = (quantity) => {
     stores.stopsFilter.toggleQuantity(quantity);
   };
 
-  setOnly = (quantity) => () => {
+  setOnly = (quantity) => {
     stores.stopsFilter.setOnly(quantity);
   };
 
@@ -36,9 +36,10 @@ class StopQuantity extends PureComponent {
       checkboxes.push(
         <Checkbox
           key={i}
-          onClick={this.toggleQuantity(i)}
+          applyArg={i}
+          onClick={this.toggleQuantity}
           value={values[i]}
-          onClickSingle={this.setOnly(i)}
+          onClickSingle={this.setOnly}
         >
           { i === 0 ? 'Без пересадок' : `${i} ${pluralize(i, 'пересадка', 'пересадки', 'пересадок')}` }
         </Checkbox>
@@ -51,7 +52,7 @@ class StopQuantity extends PureComponent {
       </SectionTitle>
 
       <Checkbox
-        onClick={this.toggleQuantity(null)}
+        onClick={this.toggleQuantity}
         value={Object.values(values).every(Boolean)}
       >
         Все
