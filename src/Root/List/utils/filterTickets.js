@@ -4,23 +4,23 @@
 
 
 const prev = {
-  stopValues: null,
+  activeStops: null,
   ticketIds: null,
   result: null,
 };
 
 
-export default (tickets, stopValues) => {
-  if(stopValues === prev.stopValues && tickets.ids === prev.ticketIds){
+export default (tickets, activeStops) => {
+  if(activeStops === prev.activeStops && tickets.ids === prev.ticketIds){
     return prev.result;
   }
 
   const result = tickets.ids.filter(id => {
     const entity = tickets.entities[id];
-    return stopValues[entity.stops];
+    return activeStops[entity.stops];
   });
 
-  prev.stopValues = stopValues;
+  prev.activeStops = activeStops;
   prev.ticketIds = tickets.ids;
   prev.result = result;
 

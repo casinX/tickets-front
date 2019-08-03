@@ -37,16 +37,14 @@ class Root extends PureComponent {
   };
 
   render() {
-    const isReady =
-      stores.list.tickets !== null &&
-      stores.currency.rates !== null &&
-      stores.stopsFilter.values !== null;
+    const isLoading = stores.list.tickets === null ||
+      stores.currency.rates === null;
 
     return <div className={styles.root}>
-      <TopBar isLoading={!isReady}/>
+      <TopBar isLoading={isLoading}/>
       <div className={styles.content}>
-        <Filters isLoading={!isReady}/>
-        <List isLoading={!isReady}/>
+        <Filters isLoading={isLoading}/>
+        <List isLoading={isLoading}/>
       </div>
     </div>;
   }
