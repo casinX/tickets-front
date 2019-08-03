@@ -36,10 +36,9 @@ class List extends PureComponent {
     const { activeStops } = stores.stopsFilter;
 
     const filteredIds = filterTickets(tickets, activeStops);
-    const isEmpty = filteredIds.length === 0;
 
     return <div className={ styles.root }>
-      { !isEmpty && filteredIds.map(id => {
+      { filteredIds.map(id => {
         const entity = tickets.entities[id];
         return <Ticket
           key={id}
@@ -49,7 +48,7 @@ class List extends PureComponent {
         />
       }) }
 
-      { isEmpty && <div className={styles.emptyStub}>
+      { filteredIds.length === 0 && <div className={styles.emptyStub}>
         Ничего не найдено
       </div> }
     </div>;
