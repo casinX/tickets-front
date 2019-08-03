@@ -28,23 +28,7 @@ class StopQuantity extends PureComponent {
   };
 
   render() {
-    const { values, min, max } = stores.stopsFilter;
-
-    const checkboxes = [];
-
-    for(let i = min; i <= max; i++){
-      checkboxes.push(
-        <Checkbox
-          key={i}
-          value={i}
-          isChecked={values[i]}
-          onClick={this.toggleQuantity}
-          onClickSingle={this.setOnly}
-        >
-          { i === 0 ? 'Без пересадок' : `${i} ${pluralize(i, 'пересадка', 'пересадки', 'пересадок')}` }
-        </Checkbox>
-      )
-    }
+    const { activeStops, availableStops } = stores.stopsFilter;
 
     return <div className={ styles.root }>
       <SectionTitle className={styles.title}>
@@ -53,12 +37,26 @@ class StopQuantity extends PureComponent {
 
       <Checkbox
         onClick={this.toggleQuantity}
-        isChecked={Object.values(values).every(Boolean)}
+        isChecked={Object.values(activeStops).every(Boolean)}
       >
         Все
       </Checkbox>
 
-      { checkboxes }
+      { availableStops.map(quantity => {
+        return <Checkbox
+          key={quantity}
+          value={quantity}
+          isChecked={activeStops[quantity]}
+          onClick={this.toggleQuantity}
+          onClickSingle={this.setOnly}
+        >
+          {
+            quantity === 0 ?
+            'Без пересадок' :
+            `${quantity} ${pluralize(quantity, 'пересадка', 'пересадки', 'пересадок')}`
+          }
+        </Checkbox>
+      }) }
     </div>;
   }
 }

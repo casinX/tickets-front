@@ -33,9 +33,9 @@ class List extends PureComponent {
 
     const { tickets } = stores.list;
     const { type: currencyType, rates } = stores.currency;
-    const { values: stopValues } = stores.stopsFilter;
+    const { activeStops } = stores.stopsFilter;
 
-    const filteredIds = filterTickets(tickets, stopValues);
+    const filteredIds = filterTickets(tickets, activeStops);
     const isEmpty = filteredIds.length === 0;
 
     return <div className={ styles.root }>

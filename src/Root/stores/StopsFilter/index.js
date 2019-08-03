@@ -1,7 +1,7 @@
 import Relax, { sync } from '@ktx/react-relax';
 
-import getValues from './utils/getValues';
-import getMinMaxStops from './utils/getMinMaxStops';
+import createActiveStops from './utils/createActiveStops';
+import getAvailableStops from './utils/getAvailableStops';
 
 
 class StopsFilter extends Relax {
@@ -11,41 +11,38 @@ class StopsFilter extends Relax {
     this._listStore = listStore;
     this._listStore.onLoadList.subscribe(this.onLoadList);
 
-    this.values = null;
-    this.min = null;
-    this.max = null;
+    this.activeStops = null;
+    this.availableStops = null;
   };
 
   @sync()
   onLoadList = () => {
     const { entities } = this._listStore.tickets;
 
-    const { min, max } = getMinMaxStops(entities);
-    this.min = min;
-    this.max = max;
-    this.values = getValues(this.min, this.max);
+    this.availableStops = getAvailableStops(entities);
+    this.activeStops = createActiveStops(this.availableStops);
   };
 
   @sync()
   toggleQuantity = (quantity) => {
 
     if(quantity === null){
-      const isSelectedAll = Object.values(this.values).every(Boolean);
-      this.values = getValues(this.min, this.max, !isSelectedAll);
+      const isSelectedAll = Object.values(this.activeStops).every(Boolean);
+      this.activeStops = createActiveStops(this.availableStops, !isSelectedAll);
       return;
     }
 
     // нужна копия тк используется в мемоизации фильтра в рендере
-    this.values = {
-      ...this.values,
-      [quantity]: !this.values[quantity],
+    this.activeStops = {
+      ...this.activeStops,
+      [quantity]: !this.activeStops[quantity],
     };
   };
 
   @sync()
   setOnly = (quantity) => {
-    this.values = getValues(this.min, this.max, false);
-    this.values[quantity] = true;
+    this.activeStops = createActiveStops(this.availableStops, false);
+    this.activeStops[quantity] = true;
   };
 }
 

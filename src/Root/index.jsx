@@ -1,8 +1,6 @@
 import React from 'react';
 import { PureComponent } from '@ktx/react-relax';
 
-import appConfig from 'config/app';
-
 import TopBar from './TopBar';
 import Filters from './Filters';
 import List from './List';
@@ -39,11 +37,10 @@ class Root extends PureComponent {
   };
 
   render() {
-    const isReady = [
-      stores.list.tickets !== null,
-      stores.currency.rates !== null,
-      stores.stopsFilter.values !== null,
-    ].every(Boolean);
+    const isReady =
+      stores.list.tickets !== null &&
+      stores.currency.rates !== null &&
+      stores.stopsFilter.values !== null;
 
     return <div className={styles.root}>
       <TopBar isLoading={!isReady}/>
