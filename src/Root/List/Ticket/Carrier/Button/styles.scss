@@ -23,7 +23,7 @@
     margin-top: 10px;
   }
 
-  @include animate(background-color, box-shadow, transform);
+  @include animateFast(background-color, box-shadow, transform);
 
   @include hover{
     box-shadow: 0 1px 0 $orange-dark, 0 1px 5px rgba(0,0,0, .25);
@@ -31,7 +31,8 @@
   }
 
   @include active{
-    transform: translateY(1px);
+    background-color: $orange-main;
     box-shadow: none;
+    transform: translateY(1px);
   }
 }
