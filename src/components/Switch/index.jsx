@@ -6,12 +6,6 @@ import Tab from './Tab';
 import styles from './styles.scss';
 
 
-// memoization ?
-const wrap = (func, arg) => () => {
-  func(arg);
-};
-
-
 const Switch = React.memo((props) => {
   const {
     items,
@@ -26,7 +20,7 @@ const Switch = React.memo((props) => {
       return <Tab
         isSelected={item.value === value}
         key={item.value}
-        onClick={wrap(onChange, item.value)}
+        onClick={() => onChange(item.value)}
       >
         { item.content }
       </Tab>
