@@ -5,12 +5,12 @@ import styles from './styles.scss';
 
 
 const Box = React.memo((props) => {
-  const { value } = props;
+  const { isChecked } = props;
 
   return <span
       className={`
         ${styles.root}
-        ${value ? styles.active : styles.inactive}
+        ${isChecked ? styles.active : styles.inactive}
       `}
     >
       <span className={styles.icon}/>
@@ -19,7 +19,7 @@ const Box = React.memo((props) => {
 
 
 Box.propTypes = {
-  value: propTypes.bool.isRequired,
+  isChecked: propTypes.bool.isRequired,
 };
 
 Box.defaultProps = {};

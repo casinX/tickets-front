@@ -10,16 +10,16 @@ const Checkbox = React.memo((props) => {
   const {
     onClick,
     value,
+    isChecked,
     onClickSingle,
     children,
-    applyArg,
   } = props;
 
   return <div
     className={ styles.root }
-    onClick={() => onClick(applyArg)}
+    onClick={() => onClick(value)}
   >
-    <Box value={value}/>
+    <Box isChecked={isChecked}/>
 
     <label className={styles.content}>
       { children }
@@ -29,7 +29,7 @@ const Checkbox = React.memo((props) => {
       className={styles.only}
       onClick={(e) => {
         e.stopPropagation();
-        onClickSingle(applyArg);
+        onClickSingle(value);
       }}
     >
       Только
@@ -41,14 +41,14 @@ const Checkbox = React.memo((props) => {
 Checkbox.propTypes = {
   children: propTypes.any.isRequired,
   onClick: propTypes.func.isRequired,
-  value: propTypes.bool.isRequired,
+  isChecked: propTypes.bool.isRequired,
   onClickSingle: propTypes.func,
-  applyArg: propTypes.any,
+  value: propTypes.any,
 };
 
 Checkbox.defaultProps = {
   onClickSingle: null,
-  applyArg: null,
+  value: null,
 };
 
 

@@ -36,9 +36,9 @@ class StopQuantity extends PureComponent {
       checkboxes.push(
         <Checkbox
           key={i}
-          applyArg={i}
+          value={i}
+          isChecked={values[i]}
           onClick={this.toggleQuantity}
-          value={values[i]}
           onClickSingle={this.setOnly}
         >
           { i === 0 ? 'Без пересадок' : `${i} ${pluralize(i, 'пересадка', 'пересадки', 'пересадок')}` }
@@ -53,7 +53,7 @@ class StopQuantity extends PureComponent {
 
       <Checkbox
         onClick={this.toggleQuantity}
-        value={Object.values(values).every(Boolean)}
+        isChecked={Object.values(values).every(Boolean)}
       >
         Все
       </Checkbox>
