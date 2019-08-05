@@ -1,3 +1,6 @@
+const CACHE = {};
+
+
 const MONTH_NAMES = {
   0: 'янв',
   1: 'фев',
@@ -26,13 +29,27 @@ const DAY_NAMES = {
 
 
 export default (dateStr) => {
-  const [date, month, year] = dateStr.split('.');
+
+  if(dateStr in CACHE){
+    return CACHE[dateStr];
+  }
+
+  const [rawDate, rawMonth, rawYear] = dateStr.split('.').map(Number);
 
   const dateObj = new Date(
-    Number(year) + 2000,
-    Number(month) - 1,
-    Number(date)
+    rawYear + 2000,
+    rawMonth - 1,
+    rawDate,
   );
 
-  return `${dateObj.getDate()} ${MONTH_NAMES[dateObj.getMonth()]} ${dateObj.getFullYear()}, ${DAY_NAMES[dateObj.getDay()]}`
+  const date = dateObj.getDate();
+  const month = MONTH_NAMES[dateObj.getMonth()];
+  const year = dateObj.getFullYear();
+  const day = DAY_NAMES[dateObj.getDay()];
+
+  const result = `${date} ${month} ${year}, ${day}`;
+
+  CACHE[dateStr] = result;
+
+  return result;
 };
